@@ -67,13 +67,16 @@ Agent flow:
 ## Project Structure
 
 ```
-my-first-agent/
+My-First-Agent/
 │
 ├── agent.py        # The complete ReAct agent
 ├── test_setup.py   # Verifies API connection
-│
+├── .env.example        # Template for API key setup
 ├── .env            # API key (not committed)
 ├── .gitignore
+├── Interactive Questions Examples.txt
+├── Prompt Output.png
+├── requirements.txt    # Python dependencies
 └── README.md
 ```
 
@@ -89,7 +92,7 @@ my-first-agent/
 ```bash
 # Clone the repository
 git clone https://github.com/Massi99RM/My-First-Agent.git
-cd my-first-agent
+cd My-First-Agent
 
 # Create and activate a virtual environment
 python -m venv venv
@@ -99,11 +102,12 @@ venv\Scripts\activate
 source venv/bin/activate
 
 # Install dependencies
-pip install langchain-anthropic langgraph langchain-community wikipedia python-dotenv
+pip install -r requirements.txt
 
 # Set up API key
-# Create a .env file in the project root:
-# ANTHROPIC_API_KEY=your-key-here
+# Copy .env.example to .env and add your key
+cp .env.example .env
+# Then edit .env and replace the placeholder with your actual key
 ```
 
 ### Run the Agent
