@@ -1,10 +1,10 @@
-# LangChain ReAct Agent — First Principles Build
+# LangChain ReAct Agent — Learning Project
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![LangGraph](https://img.shields.io/badge/LangGraph-Agent-purple.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-A minimal LLM agent built from scratch with LangChain and LangGraph to understand how AI agents work. This project implements the **ReAct (Reasoning + Acting) pattern**: an LLM that reasons about a user query, calls external tools to gather information or perform computation, and loops until it can deliver a grounded answer.
+A minimal LLM agent built to understand how ReAct agents work internally with LangChain and LangGraph. This project implements the **ReAct (Reasoning + Acting) pattern**: an LLM that reasons about a user query, calls external tools to gather information or perform computation, and loops until it can deliver a grounded answer.
 
 ## Overview
 
@@ -13,7 +13,7 @@ The agent receives a natural language question and enters a loop:
 1. The LLM reads the query and all prior context (conversation history, previous tool results)
 2. It decides whether to call a tool or give a final answer
 3. If it calls a tool, the framework executes it and feeds the result back to the LLM
-4. The loop repeats until the LLM has enough information to respond
+4. The loop repeats until the LLM returns a plain text response instead of a tool call
 
 ```
          ┌──────────────────────────┐
@@ -118,7 +118,7 @@ python agent.py
 
 ## What I Learned
 
-This project was my first step into LLM agents. Key takeaways:
+This was a learning project to understand how ReAct agents work internally — the reasoning loop, tool binding, context accumulation. I used create_react_agent to get something running fast, then studied what it was doing: how the message list acts as memory, how the LLM decides when to stop, how tool descriptions drive behavior. Key takeaways:
 
 - An agent is fundamentally a **loop with an LLM as the decision-maker** — structurally similar to a reinforcement learning agent's observe-act-observe cycle
 - The framework (LangGraph) handles orchestration, the LLM handles reasoning, the tools handle execution — knowing which layer a problem lives in is essential for debugging
